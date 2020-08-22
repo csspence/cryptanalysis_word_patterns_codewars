@@ -8,6 +8,21 @@ As an example, the word "hello" would become "0.1.2.2.3". For this task case-sen
 Your task is to return the word pattern for a given word. All words provided will be non-empty strings of alphabetic characters only, i.e. matching the regex "[a-zA-Z]+".
 */
 
-function wordPattern(word) {
-  return; 
+const wordPattern = (word) => {
+  let dict = {};
+  let num = 0;
+  let codeWord = '';
+  word = word.toLowerCase();
+  for(let i = 0; i < word.length; i++) {
+    if(dict[word[i]] === undefined) {
+      dict[word[i]] = num;
+      num++;
+    }
+    codeWord += dict[word[i]].toString();
+    if(word[i + 1] !== undefined) {
+      codeWord += '.'
+    }
+  }
+
+  return codeWord;
 }
